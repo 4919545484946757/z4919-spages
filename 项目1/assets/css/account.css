@@ -1,0 +1,106 @@
+
+
+.lv1-box {
+  width: 70%;
+  height: 1000px;
+  background-color: rgba(255, 228, 196, 0.309);
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+}
+
+.lv1-box .lv2-box {
+    width: 90%;
+    height: 300px;
+    background-color: #ffffffc9;
+    position: relative;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+.lv1-box .lv2-box .lv2-img {
+    border: black solid 2px;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#urname {
+    position: absolute;
+    top: 50px;
+    left: 270px;
+}
+#uraccount {
+    position: absolute;
+    top: 110px;
+    left: 270px;
+}
+#summy {
+    position: absolute;
+    top: 170px;
+    left: 270px;
+    height: auto;
+    width: auto;
+}
+
+.urdata {
+    font-size: 24px;
+    background-color: rgba(110, 110, 110, 0.207);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.lv1-box .lv2-box2 {
+    width: 90%;
+    height: 300px;
+    background-color: #ffffffc9;
+    position: relative;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+.lv1-box .lv2-box2 .lv2-btn {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    height: 70px;
+    background-color: #e7e7e79f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    text-align: center;
+    line-height: 70px;
+    font-size: 24px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#edit-btn {
+    top: 20px;
+}
+#password-btn {
+    top: 40px;
+}
+#logout-btn {
+    top: 60px;
+}
+
+.lv1-box .lv2-box2 .lv2-btn:hover {
+    background-color: #e7e7e7;
+}

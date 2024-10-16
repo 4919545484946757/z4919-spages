@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索示例</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+</head>
+<body>
+    <input type="text" id="search" placeholder="搜索...">
+    <ul id="results"></ul>
+
+    <script>
+        const documents = [
+            { id: 1, title: "第一篇文章", body: "这是第一篇文章的内容。" },
+            { id: 2, title: "第二篇文章", body: "这是第二篇文章的内容。" },
+            { id: 3, title: "第三篇文章", body: "这是第三篇文章的内容。" }
+        ];
+
+        const index = lunr(function () {
+            this.ref('id');
+            this.field('title');
+            this.field('body');
+
+            documents.forEach(function (doc) {
+                this.add(doc);
+            }, this);
+        });
+
+        document.getElementById('search').addEventListener('input', function () {
+            const query = this.value;
+            const results = index.search(query);
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            results.forEach(function (result) {
+                const doc = documents.find(document => document.id === parseInt(result.ref));
+                const li = document.createElement('li');
+                li.textContent = doc.title;
+                resultsContainer.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>

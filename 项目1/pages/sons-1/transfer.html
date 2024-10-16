@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>世界线跳跃中...</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+<video id="transitionVideo" autoplay muted loop playsinline>
+  <source src="../../assets/audio/no ani.mp4" type="video/mp4">
+</video>
+<script>
+  var video = document.getElementById('transitionVideo');
+  video.play();
+
+  // 当视频开始播放时，重定向到目标页面
+  video.onplay = function() {
+    setTimeout(function() {
+      window.location.href = '../main.html';
+    }, 1000); // 视频播放1秒后跳转
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.lv1-box {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(240, 248, 255, 0.482);
+    padding: 20px;
+    text-align: center;
+}
+.lv1-box .lv2-box {
+    margin-top: 50px;
+    width: auto;
+    height: auto;
+    text-align: left;
+    padding: 100px;
+    font-size: 30px;
+    line-height: 2;
+}
+.imgz {
+    width: 250px;
+    height: 250px;
+    border: black solid 2px;
+    border-radius: 50%;
+}
+
+.lv2-box i {
+    font-size: 25px;
+    color: rgba(9, 9, 65, 0.635);
+}

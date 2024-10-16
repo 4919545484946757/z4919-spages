@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>显示源代码的页面</title>
+</head>
+<body>
+
+<pre id="sourceCode"></pre>
+
+<script>
+window.onload = function() {
+    var params = new URLSearchParams(window.location.search);
+    var sourceCode = params.get('source');
+    if (sourceCode) {
+        document.getElementById('sourceCode').textContent = decodeURIComponent(sourceCode);
+    } else {
+        document.getElementById('sourceCode').textContent = 'No source code provided.';
+    }
+};
+</script>
+
+</body>
+</html>

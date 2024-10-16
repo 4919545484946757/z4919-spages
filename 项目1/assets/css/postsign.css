@@ -1,0 +1,100 @@
+#postsign {
+    width: 110px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+#postsign.cssactive {
+    width: 450px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+
+#postsign::before {
+    content: "";
+    position: fixed;
+    top: -5px;
+    right: -5px;
+    width: 120px;
+    border-radius: 0 0 0 50px;
+    height: 110px;
+    background-color: rgba(137, 137, 137, 0.52);
+    z-index: -1;
+    filter: blur(2px);
+    transition: all 0.2s ease-in-out;
+}
+#postsign.cssactive::before {
+    content: "";
+    position: fixed;
+    top: -5px;
+    right: -5px;
+    width: 450px;
+    border-radius: 0 0 0 50px;
+    height: 110px;
+    background-color: rgba(137, 137, 137, 0.52);
+    z-index: -1;
+    backdrop-filter: blur(2px);
+    transition: all 0.2s ease-in-out;
+}
+
+
+
+
+#postsign #searchbox input[type="text"] {
+    height: 50px;
+    width: 300px;
+    border-radius: 25px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 50px;
+    font-size: 18px;
+    border: black 2px solid;
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    transition: all 0.2s ease-in-out;
+}
+#postsign.cssactive #searchbox input[type="text"] {
+    height: 50px;
+    width: 300px;
+    border-radius: 25px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 50px;
+    font-size: 18px;
+    border: black 2px solid;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+#postsign #searchbox #searchbtn {
+    position: fixed;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-image: url("../ico/search_ico.png");
+    background-size: 29px 29px;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 26px;
+    right: 28px;
+    z-index: 100;
+}
+
+#postsign #searchbox #searchbtn:hover {
+    height: 46px;
+    width: 46px;
+    background-size: 32px 32px;
+    top: 24px;
+    right: 26px;
+    box-shadow: 0 0 10px #7f7f7fc3;
+    transition: all 0.2s ease-in-out;
+}
+

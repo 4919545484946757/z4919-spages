@@ -1,0 +1,40 @@
+#anchor-up {
+    position: relative;
+    top: 0;
+}
+#toppul img {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 120px;
+    right: 20px;
+    border-radius: 50%;
+    z-index: 9999;
+    cursor: pointer;
+    padding: 3px;
+    border: rgba(0, 0, 0, 0) 1px solid;
+}
+#toppul img:hover {
+    transform: all 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.064);
+    border: rgba(0, 0, 0, 0.698) 1px solid;
+}
+
+#view-code img {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 20px;
+    border-radius: 50%;
+    z-index: 9999;
+    cursor: pointer;
+    padding: 3px;
+    border: rgba(0, 0, 0, 0) 1px solid;
+}
+
+#view-code img:hover {
+    transform: all 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.064);
+    border: rgba(0, 0, 0, 0.698) 1px solid;
+}

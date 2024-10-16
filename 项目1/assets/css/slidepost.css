@@ -1,0 +1,95 @@
+
+
+.slidelist .logo:not(hover) {
+    width: 230px;
+    overflow: hidden;
+    clip-path: inset(0 150px 0 0);
+}
+.slidelist:hover .logo{
+    width: 230px;
+    display: flex;
+    clip-path: inset(0 0 0 0);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.slidelist .icon-list {
+    width: 20px;
+    height: 20px;
+}
+
+.slidelist {
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50px;
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(30, 36, 46);
+    border-radius: 10px;
+    transition: .3s;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.box {
+    display: block;
+    width: 85%;
+    margin: 9px;
+    height: 15%;
+    border-radius: 5px;
+    position: relative;
+    transition: .3s;
+    color: rgb(203, 203, 203);
+    text-decoration: none;
+}
+
+.box i {
+    font-size: 60px;
+    position: absolute;
+    margin: 7px 0 0 13px;
+}
+
+
+.box:nth-child(1)::before,
+.box:nth-child(5)::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(55,65,81);
+    bottom: -10px;
+}
+
+.box span {
+    position: relative;
+    top: 22px;
+    left: 80px;
+    font: 500 20px '';
+    opacity: 0;
+    transition: .1s;
+}
+.slidelist:hover {
+    width: 270px;
+    left: 135px;
+}
+.slidelist:hover .box  span {
+    opacity: 100;
+}
+.box:hover {
+    background-color: rgb(55,65,81);
+    color: rgb(255, 255, 255);
+}
+
+.box:hover i {
+    color: rgb(255, 255, 255);
+}

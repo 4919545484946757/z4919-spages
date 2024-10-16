@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="../assets/css/account.css">
+    <link rel="stylesheet" href="../assets/css/fltools.css">
+    <link rel="stylesheet" href="../assets/css/postsign.css">
+    <link rel="stylesheet" href="../assets/css/slidepost.css">
+    <link rel="stylesheet" href="../assets/fonts/font_4709472_7wsklliur77/iconfont.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z4919'shomepage_ver2.0\pages\account.html</title>
+    <script src="../assets/js/Lunr.js"></script>
+    <script src="../assets/js/document_contain.js"></script>
+    <script src="../assets/js/Search.js"></script>
+    <style>
+        body {
+            background-image: url('../assets/img/【哲风壁纸】2024-10-15\ 15_52_44.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="postsign" id="postsign">
+        <div id="searchbox">
+            <button id="searchbtn"></button>
+            <input type="text" placeholder="搜索..." id="search">
+            <ul id="result"></ul>
+        </div>
+    </div>
+
+    <div class="slidelist">
+        <a href="about.html" class="box"><img src="../assets/img/logo.png" class="logo"></i><span></span></a>
+        <a href="main.html" class="box"><i class="iconfont icon-a-ziyuan4"></i><span>&nbsp;主页</span></a>
+        <a href="account.html" class="box" class="active"><i class="iconfont icon-zhanghaoquanxianguanli"></i><span>&nbsp;账户</span></a>
+        <a href="timetable.html" class="box"><i class="iconfont icon-changjingguanli"></i><span>&nbsp;课程表</span></a>
+        <a href="homework.html" class="box"><i class="iconfont icon-peiwangyindao"></i><span>&nbsp;作业</span></a>
+        <a href="description.html" class="box"><i class="iconfont icon-icon_shiyongwendang"></i><span>&nbsp;概述</span></a>
+        <a href="comment.html" class="box"><i class="iconfont icon-dianzan"></i><span>&nbsp;评论</span></a>
+        <a href="contact.html" class="box"><i class="iconfont icon--lumingpai"></i><span>&nbsp;联系方式</span></a>
+        <a href="about.html" class="box"><i class="iconfont icon-zuoduiqi"></i><span>&nbsp;关于我们</span></a>
+    </div>
+    <script src="../assets/js/click.js"></script>
+    <div id="anchor-up"></div>
+    <div class="fltools">
+        <a href="#anchor-up" id="toppul"><img id="toppul-img" src="../assets/ico/wyyy.svg" alt="返回顶部"></a>
+        <button id="view-code"><img src="../assets/ico/code.svg" alt="查看源代码"></button>
+    </div>
+    
+    <div class="lv1-box">
+        <div class="lv2-box">
+            <img src="../assets/img/头像.png" alt="头像" class="lv2-img">
+            <p id="urname" class="urdata">名称：N/A</p>
+            <p id="uraccount" class="urdata">账号：N/A</p>
+            <p id="summy" class="urdata">简介：N/A</p>
+        </div>
+        <div class="lv2-box2">
+            <button id="edit-btn" class="lv2-btn"> 修改信息(暂不开放) </button>
+            <button id="password-btn" class="lv2-btn"> 密码修改(暂不开放) </button>
+            <button id="logout-btn" class="lv2-btn"> 注销 </button>
+        </div> 
+    </div>
+
+
+
+
+
+    <script>
+        var logoutbtn = document.getElementById("logout-btn");
+        logoutbtn.addEventListener("click", function() {
+            localStorage.setItem("logined", "false");
+            localStorage.setItem("usernamedata", "");
+            localStorage.setItem("accountdata", "");
+            window.location.href = "login.html";
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            var logined = localStorage.getItem("logined");
+            if (logined == "true") {
+                var urname = localStorage.getItem("usernamedata");
+                var uraccount = localStorage.getItem("accountdata");
+                var summy = localStorage.getItem("summy");
+                document.getElementById("urname").innerHTML = "名称：" + urname;
+                document.getElementById("uraccount").innerHTML = "账号：" + uraccount;
+                document.getElementById("summy").innerHTML = "简介：" + summy;
+            }
+            else {
+                alert("请登录");
+                window.location.href = "login.html";
+                return false;
+            }
+        }
+    </script>
+    <script src="../assets/js/smooth-scroll.js"></script>
+    <script src="../assets/js/view-sourcecode.js"></script>
+</body>
+</html>
