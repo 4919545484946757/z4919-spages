@@ -1,0 +1,51 @@
+body {
+    background-image: url('../img/【哲风壁纸】2024-10-18\ 13_29_58.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    top: 200px;
+    width: 740px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    backdrop-filter: blur(10px);
+    background-color: rgba(240, 248, 255, 0.285);
+}
+.week {
+    width: 100px;
+    background-color: rgb(44, 35, 142);
+    color: white;
+}
+.weekend {
+    width: 60px;
+    background-color: rgb(150, 127, 255);
+}
+.classturn {
+    width: 50px;
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+.timeperiod {
+    width: 70px;
+    background-color: cadetblue;
+}
+
+.container .even {
+    background-color: rgb(221, 221, 221);
+    text-align: center;
+}
+.container .classturnl {
+    text-align: center;
+}
+
+.container th:hover {
+    box-shadow: rgb(190, 190, 190) 0px 0px 10px;
+}
+.container td:hover {
+    box-shadow: rgb(190, 190, 190) 0px 0px 10px;
+    transform: scale(1.05);
+}

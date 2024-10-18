@@ -5,99 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>z4919'shomepage_ver2.0/login</title>
-
+    <link rel="stylesheet" href="../assets/css/login.css">
     <script src="../assets/js/login.js"></script>
 
     <style>
-        body {
-            background-image: url('../assets/img/part.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            height: 100%;
-            width: 100%;
-            justify-content: center;
-            display: flex;
-            overflow: hidden;
-        }
-        body::before {
-            content: "";
-            filter: blur(8px);
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('../assets/img/part.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            z-index: -1;
-        }
-        .win {
-            position: relative;
-            top: 300px;
-            width: 1100px;
-            height: 550px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
-            display: flex;
-        }
-
-        .b {
-            width: 800px;
-            height: 550px;
-            background-image: url('../assets/img/part.jpg');
-            background-size: cover;
-        }
-
-        .form {
-            width: 300px;
-            height: 550px;
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .c {
-            width: 250px;
-            height: 500px;
-        }
-        .c h1 {
-            font: 900 30px '微软雅黑';
-        }
-        .c .d {
-            width: 230px;
-            margin: 20px 0;
-            outline: none;
-            border: 0;
-            padding: 10px;
-            border-bottom: 3px solid #b96665;
-            font: 900 16px '微软雅黑';
-        }
-        .c .f {
-            float: right;
-            margin: 10px 0;
-        }
-        .c .e {
-            border: none;
-            position: absolute;
-            margin: 20px;
-            bottom: 40px;
-            display: block;
-            width: 200px;
-            height: 60px;
-            font: 900 30px '';
-            line-height: 50px;
-            text-decoration: none;
-            border-radius: 30px;
-            background: linear-gradient(to right, #b96665, #dcf408);
-            text-align: center;
-            color: #000000a3;
-        }
-        .g {
-            position: relative;
-            bottom: -130px;
-        }
+        
     </style>
 </head>
 
@@ -105,8 +17,8 @@
     <div class="win">
         <div class="b"></div>
         <div class="form">
-            <div class="c">
-                <h1>登录/注册</h1>
+            <div class="c" id="loginwin">
+                <h1>登录</h1>
                 <form action="main.html" name="loginform" method="post" onsubmit="return check()">
                 <input type="text" class="d" name="username" placeholder="USER NAME">
                 <input type="text" class="d" name="account" placeholder="ACCOUNT">
@@ -115,12 +27,42 @@
                 <a href="forget.html" class="f">忘记密码?</a>
                 </form>
                 <div class="g">
-                <h4 style="white-space: nowrap;">Don't have an account? <a href="register.html">Register</a></h4>
+                <h4 style="white-space: nowrap;">Don't have an account? <span id="reg-btn">Register</span></h4>
                 </div>
             </div>
+
+            <div class="reg" id="regwin">
+                <h1>注册</h1>
+                <form action="main.html" name="regform" method="post" onsubmit="return check()">
+                    <input type="text" class="d" name="username" placeholder="USER NAME">
+                    <input type="text" class="d" name="account" placeholder="ACCOUNT">
+                    <input type="password" class="d" name="password" placeholder="PASS WORD">
+                    <button class="e" id="register" type="submit">sign up</button>
+                    <a href="forget.html" class="f"> </a>
+                </form>
+                <div class="g">
+                    <h4 style="white-space: nowrap;">Already have an account? <span id="login-btn">Login</span></h4>
+                </div>
+            </div>
+            
         </div>
     </div>
 
+<script>
+    var loginwin = document.getElementById("loginwin");
+var regwin = document.getElementById("regwin");
+var loginbtn = document.getElementById("login-btn");
+var regbtn = document.getElementById("reg-btn");
+regbtn.addEventListener("click",() => {
+    loginwin.classList.add("active");
+    regwin.classList.add("active");
+})
+loginbtn.addEventListener("click",() => {
+    loginwin.classList.remove("active");
+    regwin.classList.remove("active");
+})
+
+</script>
 
 </body>
 

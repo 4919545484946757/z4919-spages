@@ -19,19 +19,9 @@
 </style>
 </head>
 <body>
-<video id="transitionVideo" autoplay muted loop playsinline>
-  <source src="项目1/assets/audio/no ani.mp4" type="video/mp4">
-</video>
-<script>
-  var video = document.getElementById('transitionVideo');
-  video.play();
 
-  // 当视频开始播放时，重定向到目标页面
-  video.onplay = function() {
-    setTimeout(function() {
+<script>
       window.location.href = '项目1/pages/login.html';
-    }, 1000); // 视频播放1秒后跳转
-  };
 </script>
 </body>
 </html>
