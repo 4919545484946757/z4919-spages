@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>z4919'shomepage_ver2.0\pages\example.html</title>
     <script src="../assets/js/Lunr.js"></script>
+    <script src="../assets/js/document_contain.js"></script>
+    <script src="../assets/js/Search.js"></script>
     <style>
     </style>
 </head>
@@ -51,25 +53,7 @@
 
 
 
-    <script>
-const index = new lunr.Index()
-
-index.ref('id')
-index.field('title', { boost: 10 })
-index.field('body')
-
-const documents = [
-  {
-    id: '1',
-    title: 'JavaScript 全文搜索引擎 lunr.js',
-    body: 'lunr.js 是一个在浏览器中运行的全文搜索引擎库……'
-  },
-  // 更多文档…
-]
-
-documents.forEach((doc) => index.add(doc))
-
-    </script>
+    
     <script src="../assets/js/smooth-scroll.js"></script>
     <script src="../assets/js/view-sourcecode.js"></script>
 </body>

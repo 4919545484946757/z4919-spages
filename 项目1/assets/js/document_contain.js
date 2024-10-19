@@ -1,5 +1,10 @@
-const documents = [
-    { id: 1, title: "第一篇文章", body: "这是第一篇文章的内容。" },
-    { id: 2, title: "第二篇文章", body: "这是第二篇文章的内容。" },
-    { id: 3, title: "第三篇文章", body: "这是第三篇文章的内容。" }
-];
+var documents = [{
+    "name": "Lunr",
+    "text": "Like Solr, but much smaller, and not as bright."
+  }, {
+    "name": "React",
+    "text": "A JavaScript library for building user interfaces."
+  }, {
+    "name": "Lodash",
+    "text": "A modern JavaScript utility library delivering modularity, performance & extras."
+  }]
