@@ -67,23 +67,30 @@ body {
     height: 550px;
     top: 25px;
     right: 25px;
-    background-color: #90909038;
+    background-color: rgba(242, 242, 242, 0.912);
     overflow: hidden;
 }
 
 .text-box {
     position: relative;
-    width: 375px;
-    height: 550px;
-    background-color: rgb(74, 74, 74);
-    left: 375px;
+    width: 355px;
+    height: 500px;
+    background-color: rgba(242, 242, 242, 0);
+    left: 15px;
+    top: 25px;
+}
+
+.text-box #name1 {
+    font-size: 24px;
 }
 
 .text-box2 {
     position: relative;
+    padding: 20px;
+    margin: 5px;
     width: 375px;
     height: 550px;
-    background-color: rgb(77, 77, 77);
+    background-color: rgba(242, 242, 242, 0.912);
     left: 375px;
 }
 
@@ -129,7 +136,7 @@ body {
     background-image: url('../../img/R-C.jpg');
 }
 #l3 {
-    background-image: url('../../img/p2553594918.webp');
+    background-image: url('../../img/6c224f4a20a44623073abbf69a22720e0df3d7b5.webp');
 }
 #l4 {
     background-image: url('../../img/p2016401659.webp');
