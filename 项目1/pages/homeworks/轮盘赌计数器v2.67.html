@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮盘赌计数器v2.67</title>
+    <style>
+        body {
+            background-color: #eef5f8;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23e5e2f5' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            height: 700px;
+            width: 600px;
+        }
+        .counter {
+            margin: 20px;
+            text-align: center;
+            background-color: rgba(223, 223, 223, 0.052);
+            width: 250px;
+            height: 140px;
+            position: relative;
+            top: 10px;
+            border-radius: 20px;
+            border: #424242 solid 1px;
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+        }
+
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .c002 {
+            font-size: 50px;
+            color: royalblue;
+            cursor: pointer;
+            position: relative;
+            top: 45%;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+        .c001 {
+            font-size: 50px;
+            color: rgb(224, 35, 14);
+            cursor: pointer;
+            position: relative;
+            top: 45%;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .add {
+            background-color: rgb(223, 113, 113);
+            cursor: pointer;
+        }
+
+        .sub {
+            background-color: #84946757;
+            cursor: pointer;
+            position: relative;
+            right: -101px;
+            bottom: -29px;
+            border-radius: 20px 0 20px 0;
+            z-index: 1;
+            color: #190505;
+            font-weight: 600;
+        }
+
+        .filter {
+            width: 50px;
+            height: 120px;
+            border: #131313 solid 2px;
+            background-color: rgb(234, 234, 234);
+            float: left;
+            margin: 1px;
+            font-size: 27px;
+            position: relative;
+            transition: all 0.05s ease-in-out;
+            cursor: pointer;
+            top: -23px;
+            left: 4px;
+        }
+
+        .btom-color {
+            position: absolute;
+            height: 20px;
+            width: 100%;
+            background-color: #e4da17;
+            bottom: 0;
+        }
+
+        .filter.real {
+            background-color: rgb(255, 81, 51);
+            color: white;
+        }
+
+        .filter.blank {
+            background-color: #50378a;
+            color: white;
+        }
+
+        .bigger:hover {
+            transform: scale(1.05);
+            transition: all 0.1s ease-in-out;
+        }
+
+        .filter-container {
+            background-color: #f2f2f244;
+            height: 180px;
+            width: 544px;
+            top: 99px;
+            position: absolute;
+            border: #424242 solid 1px;
+            border-radius: 20px;
+            backdrop-filter: blur(2px);
+        }
+
+        .filter-container2 {
+            width: 450px;
+            height: 125px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .reset {
+            position: absolute;
+            left: -35px;
+            width: 30px;
+            height: 82px;
+            top: 50%;
+            padding-top: 38px;
+            text-align: center;
+            border: #131313 solid 1px;
+            border-radius: 10px 0 0 10px;
+            color: rgb(189, 189, 189);
+            transform: translateY(-50%);
+            background-color: #424242;
+            cursor: pointer;
+        }
+
+        .reset:hover {
+            background-color: #50378a;
+            color: white;
+            cursor: pointer;
+        }
+
+        .input {
+            position: absolute;right: -35px;
+            width: 30px;
+            height: 82px;
+            top: 50%;
+            padding-top: 38px;
+            text-align: center;
+            border: #131313 solid 1px;
+            border-radius: 0 10px 10px 0;
+            color: rgb(189, 189, 189);
+            transform: translateY(-50%);
+            background-color: #424242;
+            cursor: pointer;
+        }
+
+        .input:hover {
+            background-color: #50378a;
+            color: white;
+            cursor: pointer;
+        }
+
+        .turn {
+        user-select: none; /* Standard syntax */
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        .dis-play {
+            display: none;
+        }
+
+        .tips {
+            width: 300px;
+            height: auto;
+            position: absolute;
+            bottom: 10px;
+            margin: 0px;
+            border: #424242 solid 1px;
+            border-radius: 10px;
+            padding: 30px;
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+        }
+
+        .realf {
+            width: 50px;
+            height: 18px;
+            background-color: #db8585;
+            float: left;
+            left: 4px;
+            position: relative;
+            top: -23px;
+            margin: 1px;
+            border: #4242425d 2px solid;
+        }
+
+        #rf1 {
+            border-radius: 10px 0 0 0;
+        }
+
+        #rf8 {
+            border-radius: 0 10px 0 0;
+        }
+
+        #bf1 {
+            border-radius: 0 0 0 10px;
+        }
+
+        #bf8 {
+            border-radius: 0 0 10px 0;
+        }
+
+        .blanf {
+            width: 50px;
+            height: 18px;
+            background-color: #b980e7;
+            float: left;
+            left: 4px;
+            position: relative;
+            top: -22px;
+            margin: 1px;
+            border: #49195454 2px solid;
+        }
+
+        .closew {
+            position: absolute;
+            top: -13px;
+            right: -40px;
+            height: 50px;
+            width: 100px;
+            font-size: 30px;
+            transform: rotate(45deg);
+            background-color: #e3eef2;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="total">
+        <div>
+
+        </div>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-container2">
+            <div class="reset turn" onclick="reset()">重置</div>
+            <div class="realf" id="rf1"></div>
+            <div class="realf" id="rf2"></div>
+            <div class="realf" id="rf3"></div>
+            <div class="realf" id="rf4"></div>
+            <div class="realf" id="rf5"></div>
+            <div class="realf" id="rf6"></div>
+            <div class="realf" id="rf7"></div>
+            <div class="realf" id="rf8"></div>
+            <div id="f1" class="filter bigger"><div class="btom-color"></div><span class="turn">1</span></div>
+            <div id="f2" class="filter bigger"><div class="btom-color"></div><span class="turn">2</span></div>
+            <div id="f3" class="filter bigger"><div class="btom-color"></div><span class="turn">3</span></div>
+            <div id="f4" class="filter bigger"><div class="btom-color"></div><span class="turn">4</span></div>
+            <div id="f5" class="filter bigger"><div class="btom-color"></div><span class="turn">5</span></div>
+            <div id="f6" class="filter bigger"><div class="btom-color"></div><span class="turn">6</span></div>
+            <div id="f7" class="filter bigger"><div class="btom-color"></div><span class="turn">7</span></div>
+            <div id="f8" class="filter bigger"><div class="btom-color"></div><span class="turn">8</span></div>
+            <div class="blanf" id="bf1"></div>
+            <div class="blanf" id="bf2"></div>
+            <div class="blanf" id="bf3"></div>
+            <div class="blanf" id="bf4"></div>
+            <div class="blanf" id="bf5"></div>
+            <div class="blanf" id="bf6"></div>
+            <div class="blanf" id="bf7"></div>
+            <div class="blanf" id="bf8"></div>
+            <div class="input turn" onclick="inpu()">导入</div>
+        </div>
+    </div>
+    <div class="counter turn" id="counter1">
+        <div class="c001 turn">实弹: <span id="count1" class="turn">0</span></div>
+        <button class="sub turn" id="sub1" onclick="decrease(1)">-</button>
+    </div>
+    <div class="counter turn" id="counter2">
+        <div class="c002 turn">虚弹: <span id="count2" class="turn">0</span></div>
+        <button class="sub turn" id="sub2" onclick="decrease(2)">-</button>
+    </div>
+
+    <div class="tips">
+        <button class="closew turn" onclick="closew()">+</button>
+        <h2>TIPs:</h2>
+        <p>左键点击其设为实弹，右键点击设为虚弹。</p>
+        <p>左键加，右键减</p>
+        <p>虚弹和实弹的数量不能超过8个。</p>
+    </div>
+
+    <script>
+        let count1 = 0;
+        let count2 = 0;
+        const textc = document.querySelectorAll('#counter1');
+        const textv = document.querySelectorAll('#counter2');
+        
+        function increase(counter) {
+            if (count1 + count2 < 8){
+                if (counter === 1) {
+                    if (count1 < 8) { // 限制在0~8的范围
+                        count1++;
+                        document.getElementById('count1').innerText = count1;
+                    }
+                } else if (counter === 2) {
+                    if (count2 < 8) { // 限制在0~8的范围
+                        count2++;
+                        document.getElementById('count2').innerText = count2;
+                    }
+                }
+            }else{
+                if (counter === 1) {
+                    if (count1 < 8) { // 限制在0~8的范围
+                        count1++;
+                        count2--;
+                        document.getElementById('count1').innerText = count1;
+                        document.getElementById('count2').innerText = count2;
+                    }
+                } else if (counter === 2) {
+                    if (count2 < 8) { // 限制在0~8的范围
+                        count2++;
+                        count1--;
+                        document.getElementById('count1').innerText = count1;
+                        document.getElementById('count2').innerText = count2;
+                    }
+                }
+            }
+        }
+
+        function decrease(counter) {
+            if (counter === 1) {
+                if (count1 > 0) { // 确保不低于0
+                    count1--;
+                    document.getElementById('count1').innerText = count1;
+                }
+            } else if (counter === 2) {
+                if (count2 > 0) { // 确保不低于0
+                    count2--;
+                    document.getElementById('count2').innerText = count2;
+                }
+            }
+        }
+        
+        textc.forEach(function(tid) {
+            tid.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                decrease(1);
+            });
+            tid.addEventListener('click', function(event) {
+                if (event.button === 0) {
+                    increase(1);
+                }
+            });
+        });
+        textv.forEach(function(tid) {
+            tid.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                decrease(2);
+            });
+            tid.addEventListener('click', function(event) {
+                if (event.button === 0) {
+                    increase(2);
+                }
+            });
+        });
+
+        function closew() {
+            document.querySelector('.tips').classList.toggle('dis-play');
+        }
+
+        var subbtn = document.getElementById('sub1');
+        var subbtn2 = document.getElementById('sub2');
+        
+        subbtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            count1--;
+            document.getElementById('count1').innerText = count1;
+        });
+        
+        subbtn2.addEventListener('click', function(event) {
+            event.preventDefault();
+            count2--;
+            document.getElementById('count2').innerText = count2;
+        });
+        
+    </script>
+    <script>
+                // 获取你想要添加事件监听的元素
+        const elements = document.querySelectorAll('.filter');
+        const ref = document.querySelectorAll('.realf');
+        const blf = document.querySelectorAll('.blanf');
+
+        function reset() {
+            elements.forEach(function(elements) {
+                elements.classList.remove('real');
+                elements.classList.remove('blank');
+                elements.classList.remove('hidden');
+            });
+            ref.forEach(function(ref) {
+                ref.classList.remove('hidden');
+            });
+            blf.forEach(function(blf) {
+                blf.classList.remove('hidden');
+            });
+        }
+
+        ref.forEach(function(ref) {
+            ref.addEventListener('click', function(event) {
+                event.preventDefault();
+                var target = elements[ref.id.slice(2) - 1];
+                if (target.classList.contains('real') || target.classList.contains('blank')) {
+                    // 移除类名 'blank'
+                    target.classList.remove('blank');
+                    target.classList.remove('real');
+                } else {
+                    // 移除类名 'blank'
+                    target.classList.remove('blank');
+                    target.classList.add('real');
+                }
+            });
+        });
+
+        blf.forEach(function(blf) {
+            blf.addEventListener('click', function(event) {
+                event.preventDefault();
+                var target = elements[blf.id.slice(2) - 1];
+                if (target.classList.contains('blank') || target.classList.contains('real')) {
+                    // 移除类名 'blank'
+                    target.classList.remove('blank');
+                    target.classList.remove('real');
+                } else {
+                    // 移除类名 'blank'
+                    target.classList.remove('real');
+                    target.classList.add('blank');
+                }
+            });
+        });
+
+        function inpu() {
+            reset();
+            var totalise = count1 + count2;
+            for (i=8;i>totalise;i--) {
+                elements[i-1].classList.add('hidden');
+                ref[i-1].classList.add('hidden');
+                blf[i-1].classList.add('hidden');
+            }
+        }
+        
+        elements.forEach(function(element) {
+            // 为右键点击添加事件监听
+            element.addEventListener('contextmenu', function(event) {
+                // 阻止默认的右键菜单
+                event.preventDefault();
+                if (this.classList.contains('blank') || this.classList.contains('real')) {
+                    // 移除类名 'blank'
+                    this.classList.remove('blank');
+                    this.classList.remove('real');
+                } else {
+                    // 移除类名 'blank'
+                    this.classList.remove('real');
+                    this.classList.add('blank');
+                }
+            });
+
+            // 为左键点击添加事件监听
+            element.addEventListener('click', function(event) {
+                // 只处理左键点击（通常是0，但为了兼容性，这里做一个检查）
+                if (event.button === 0) {
+                    if (this.classList.contains('real') || this.classList.contains('blank')) {
+                        // 移除类名 'blank'
+                        this.classList.remove('blank');
+                        this.classList.remove('real');
+                    } else {
+                        // 移除类名 'blank'
+                        this.classList.remove('blank');
+                        this.classList.add('real');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

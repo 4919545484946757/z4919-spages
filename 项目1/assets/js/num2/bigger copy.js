@@ -24,6 +24,42 @@
                 imgbox2.classList.remove('show');
         }
         var filmid = this.id;
+
+        var fimbox = document.querySelectorAll('.screen-box-img-content,.screen-box-img-content2');
+        fimbox.forEach(function(item) {
+            item.addEventListener('click', function() {
+                dicherf(filmid);
+            });
+        });
+        
+        function dicherf(filmid) {
+            switch (filmid) {
+                case 'l1':
+                    window.location.href = 'https://www.bilibili.com/bangumi/play/ep85276';
+                    break;
+                case 'l2':
+                    alert('腾讯还我版权');
+                    break;
+                case 'l3':
+                    window.location.href = 'https://www.bilibili.com/bangumi/play/ss2648?spm_id_from=333.337.0.0';
+                    break;  
+                case 'l4':
+                    window.location.href = 'https://www.bilibili.com/bangumi/play/ep741240?theme=movie&spm_id_from=333.337.0.0';
+                    break;
+                case 'l5':
+                    alert('没找到正版资源');
+                    break;
+                case 'l6':
+                    alert('没找到正版资源');
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+
+
+
         switch (filmid) {
             case 'l1':
                 name1.innerHTML = 'S;G-负荷领域的既视感';
